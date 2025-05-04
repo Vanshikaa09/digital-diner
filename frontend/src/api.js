@@ -196,56 +196,126 @@ export const fetchOrderItems = async (orderId) => {
     return []; // Return empty array when API is unavailable
   }
 }
-// import axios from 'axios';
 
-// const API_URL = 'http://localhost:3000/api';
+export const fetchMenuItem = async (itemId) => {
+  try {
+    console.log("Fetching menu item with ID:", itemId)
+    const response = await axios.get(`${API_URL}/menu/${itemId}`);
+    console.log("Menu item API response:", response.data)
+    return response.data
+  } catch (error) {
+    console.error("Error fetching menu item:", error)
+    
+    // Return mock data for development if API is not available
+    // First try to get the item from the mock menu data
+    const mockMenu = [
+      {
+        id: 1,
+        name: "Veggie Burger",
+        description: "Fresh veggie patty with lettuce, tomato, and special sauce",
+        price: 499,
+        imageUrl: "https://via.placeholder.com/300x200?text=Veggie+Burger",
+        category: "Main Course",
+        ingredients: ["Veggie patty", "Lettuce", "Tomato", "Special sauce", "Whole wheat bun"],
+        allergens: ["Gluten", "Soy"],
+        nutritionalInfo: {
+          calories: 450,
+          protein: "15g",
+          carbs: "48g",
+          fat: "22g"
+        }
+      },
+      {
+        id: 2,
+        name: "Chicken Pizza",
+        description: "Homemade pizza with grilled chicken, bell peppers, and mozzarella",
+        price: 799,
+        imageUrl: "https://via.placeholder.com/300x200?text=Chicken+Pizza",
+        category: "Main Course",
+        ingredients: ["Pizza dough", "Tomato sauce", "Grilled chicken", "Bell peppers", "Mozzarella"],
+        allergens: ["Gluten", "Dairy"],
+        nutritionalInfo: {
+          calories: 720,
+          protein: "32g",
+          carbs: "68g",
+          fat: "36g"
+        }
+      },
+      {
+        id: 3,
+        name: "Chocolate Milkshake",
+        description: "Creamy chocolate milkshake with whipped cream",
+        price: 249,
+        imageUrl: "https://via.placeholder.com/300x200?text=Chocolate+Milkshake",
+        category: "Beverages",
+        ingredients: ["Milk", "Chocolate syrup", "Vanilla ice cream", "Whipped cream"],
+        allergens: ["Dairy"],
+        nutritionalInfo: {
+          calories: 520,
+          protein: "8g",
+          carbs: "72g",
+          fat: "22g"
+        }
+      },
+      {
+        id: 4,
+        name: "Fish & Chips",
+        description: "Crispy fried fish fillet with seasoned French fries",
+        price: 599,
+        imageUrl: "https://via.placeholder.com/300x200?text=Fish+And+Chips",
+        category: "Main Course",
+        ingredients: ["Fish fillet", "Batter", "Potatoes", "Salt", "Vinegar"],
+        allergens: ["Fish", "Gluten"],
+        nutritionalInfo: {
+          calories: 680,
+          protein: "24g",
+          carbs: "76g",
+          fat: "32g"
+        }
+      },
+      {
+        id: 5,
+        name: "Caesar Salad",
+        description: "Fresh romaine lettuce with Caesar dressing, croutons, and parmesan",
+        price: 349,
+        imageUrl: "https://via.placeholder.com/300x200?text=Caesar+Salad",
+        category: "Appetizers",
+        ingredients: ["Romaine lettuce", "Caesar dressing", "Croutons", "Parmesan cheese"],
+        allergens: ["Dairy", "Gluten", "Eggs"],
+        nutritionalInfo: {
+          calories: 320,
+          protein: "12g",
+          carbs: "18g",
+          fat: "24g"
+        }
+      },
+      {
+        id: 6,
+        name: "Veg Noodles",
+        description: "Stir-fried noodles with mixed vegetables in soy sauce",
+        price: 399,
+        imageUrl: "https://via.placeholder.com/300x200?text=Veg+Noodles",
+        category: "Main Course",
+        ingredients: ["Noodles", "Mixed vegetables", "Soy sauce", "Garlic", "Ginger"],
+        allergens: ["Gluten", "Soy"],
+        nutritionalInfo: {
+          calories: 420,
+          protein: "10g",
+          carbs: "68g",
+          fat: "14g"
+        }
+      },
+    ]
+    
+    const item = mockMenu.find(item => item.id == itemId)
+    
+    if (item) {
+      return item
+    }
+    
+    // If item not found in mock data, throw error
+    throw new Error("Menu item not found")
+  }
+}
 
-// export const fetchMenu = async () => {
-//   try {
-//     const response = await axios.get(`${API_URL}/menu`);
-//     return response.data;
-//   } catch (error) {
-//     console.error('Error fetching menu:', error);
-//     return [];
-//   }
-// };
 
-// export const createOrder = async (orderData) => {
-//   try {
-//     const response = await axios.post(`${API_URL}/orders`, orderData);
-//     return response.data;
-//   } catch (error) {
-//     console.error('Error creating order:', error);
-//     throw error;
-//   }
-// };
-
-// export const fetchOrders = async () => {
-//   try {
-//     const response = await axios.get(`${API_URL}/orders`);
-//     return response.data;
-//   } catch (error) {
-//     console.error('Error fetching orders:', error);
-//     return [];
-//   }
-// };
-
-// export const createOrderItem = async (orderItemData) => {
-//   try {
-//     const response = await axios.post(`${API_URL}/order-items`, orderItemData);
-//     return response.data;
-//   } catch (error) {
-//     console.error('Error creating order item:', error);
-//     throw error;
-//   }
-// };
-
-// export const fetchOrderItems = async (orderId) => {
-//   try {
-//     const response = await axios.get(`${API_URL}/order-items/${orderId}`);
-//     return response.data;
-//   } catch (error) {
-//     console.error('Error fetching order items:', error);
-//     return [];
-//   }
-// };

@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {},
+    colors: {
+      bottleGreen: '#016646', // Add your bottle green color code here
+    },
   },
   plugins: [],
 }

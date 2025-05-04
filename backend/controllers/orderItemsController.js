@@ -106,7 +106,7 @@ const deleteOrderItem = async (req, res) => {
 
 module.exports = { createOrderItem, getOrderItems, updateOrderItem, deleteOrderItem };
 
-// const { Pool } = require('pg');
+
 // const pool = new Pool({
 //     user: 'postgres',
 //     host: 'localhost',

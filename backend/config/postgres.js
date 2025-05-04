@@ -29,23 +29,3 @@ const query = async (text, params) => {
 
 module.exports = { pool, query };
 
-
-// // config/postgres.js
-// const { Pool } = require('pg');
-// require('dotenv').config();
-
-// // Initialize pool with environment variables
-// const pool = new Pool({
-//   user: process.env.PGUSER,
-//   password: process.env.PGPASSWORD,
-//   host: process.env.PGHOST,
-//   port: process.env.PGPORT,
-//   database: process.env.PGDATABASE,
-// });
-
-// // Test the connection
-// pool.connect()
-//   .then(() => console.log('Connected to PostgreSQL'))
-//   .catch(err => console.error('PostgreSQL connection error:', err));
-
-// module.exports = { pool };  // Export pool as an object

@@ -20,7 +20,7 @@ const AdminDashboard = () => {
       duration: 3000,
       isClosable: true,
     })
-    navigate("/AdminLogin")
+    navigate("/Admin")
   }
 
   return (

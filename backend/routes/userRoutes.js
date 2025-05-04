@@ -13,10 +13,10 @@ router.post('/login', loginUser);
 // Get current user info (protected route)
 router.get('/me', authenticate, getCurrentUser);
 
-// Optional: Admin-only routes
+// // Optional: Admin-only routes
 // router.get('/all-users', authenticate, isAdmin, getAllUsers);
 
-// Optional: Staff-only routes
+// // Optional: Staff-only routes
 // router.get('/staff-dashboard', authenticate, isStaff, getStaffDashboard);
 
 module.exports = router;
