@@ -98,3 +98,4 @@ export function CartProvider({ children }) {
 }
 
 
+export default CartContext;
