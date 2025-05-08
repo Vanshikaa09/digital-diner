@@ -1,0 +1,33 @@
+// config/postgres.js - UPDATED
+const { Pool } = require('pg');
+require('dotenv').config();
+
+// Initialize pool with successful configuration
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:Kunal%401411@db.zguqoflufgnjdbwlmpfl.supabase.co:5432/postgres',
+  ssl: {
+    rejectUnauthorized: false // Required for Supabase connections
+  },
+  // Add connection timeout to prevent hanging
+  connectionTimeoutMillis: 10000,
+  // Add idle timeout to manage connection pool better
+  idleTimeoutMillis: 30000
+});
+
+// Test the connection
+pool.connect()
+  .then(() => console.log('Connected to PostgreSQL'))
+  .catch(err => console.error('PostgreSQL connection error:', err));
+
+// Helper function for database queries
+const query = async (text, params) => {
+  try {
+    const result = await pool.query(text, params);
+    return result;
+  } catch (error) {
+    console.error('Database query error:', error);
+    throw error;
+  }
+};
+
+module.exports = { pool, query };

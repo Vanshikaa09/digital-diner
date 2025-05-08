@@ -9,4 +9,4 @@ const MenuItemSchema = new mongoose.Schema({
   image: String // You can use an image URL for now
 });
 
-module.exports = mongoose.model("MenuItem", MenuItemSchema);
+module.exports = mongoose.model("MenuItem", MenuItemSchema ,'menuitems');

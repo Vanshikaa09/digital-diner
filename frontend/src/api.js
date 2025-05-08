@@ -1,6 +1,9 @@
 import axios from "axios"
 
-const API_URL = "http://localhost:3000/api"
+// const API_URL = "http://localhost:3000/api"
+
+const API_URL ="https://digital-diner-1-wjrk.onrender.com/"
+
 
 // Menu Items
 export const fetchMenu = async () => {
